@@ -1,0 +1,47 @@
+<h1>Usuarios</h1>
+<hr>
+
+<div class="row">
+  <div class="col-md-12 text-right">
+    <button class="btn btn-outline-primary" [routerLink]="['/user', 'nuevo']">Nuevo</button>
+  </div>
+</div>
+
+<div class="table-responsive">
+
+  <table class="table">
+    <thead class="thead-inverse">
+    <tr>
+      <th>#</th>
+      <th>nombre</th>
+      <th>apellidos</th>
+      <th>portal</th>
+      <th>bloque</th>
+      <th>piso</th>
+      <th>letra</th>
+      <th class="text-right">Opciones</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let k of users | keys; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{users[k].nombre}}</td>
+      <td>{{users[k].apellidos}}</td>
+      <td>{{users[k].portal}}</td>
+      <td>{{users[k].bloque}}</td>
+      <td>{{users[k].piso}}</td>
+      <td>{{users[k].letra}}</td>
+      <td class="text-right">
+        <button type="button" class="btn btn-outlet-success" [routerLink]="['/user', k]">Editar</button>
+        <button type="button" class="btn btn-outlet-danger" (click)="borrarUser(k)">Borrar</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="alert alert-info" role="alert" *ngIf="(users | keys).length === 0 && !loading">
+    <strong>No hay mas usuarios</strong>
+  </div>
+
+  <div class="alert alert-warning" role="alert" *ngIf="loading">Cargando...</div>
+</div>

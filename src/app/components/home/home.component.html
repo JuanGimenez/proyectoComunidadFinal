@@ -1,3 +1,23 @@
-<p>
-  home works!
-</p>
+<div>
+  <p *ngIf="user">Logged in as: {{ user?.email}} - {{user?.displayName}}</p>
+  <button class="btn btn-primary mr-2" *ngIf="!user" (click)="login()">Log In</button>
+  <button class="btn btn-primary mr-2" *ngIf="!user" (click)="register()">register</button>
+  <button class="btn btn-primary mr-2" *ngIf="user" (click)="logout()">Log out</button>
+</div>
+<div class="cardPistas">
+  <div class="divContenedor">
+    <div class="card cardTenis" style="width: 18rem;">
+      <img class="card-img-top" src="../../../assets/images/tennis-3552164_1920.jpg" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">Reverva la pista de tenis</p>
+      </div>
+    </div>
+
+    <div class="card cardPadel" style="width: 18rem;" [routerLink]="['padel']">
+      <img class="card-img-top" src="../../../assets/images/paddle-2517074_1920.jpg" alt="Card image cap">
+      <div class="card-body">
+        <p class="card-text">Reserva la pista de padel</p>
+      </div>
+    </div>
+  </div>
+</div>

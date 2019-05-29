@@ -13,12 +13,15 @@
     <thead class="thead-inverse">
     <tr>
       <th>#</th>
-      <th>nombre</th>
-      <th>apellidos</th>
-      <th>portal</th>
-      <th>bloque</th>
-      <th>piso</th>
-      <th>letra</th>
+      <th>Nombre</th>
+      <th>Apellidos</th>
+      <th>Portal</th>
+      <th>Bloque</th>
+      <th>Piso</th>
+      <th>Letra</th>
+      <th>Correo</th>
+      <th>Contraseña</th>
+      <th>Admin</th>
       <th class="text-right">Opciones</th>
     </tr>
     </thead>
@@ -31,9 +34,12 @@
       <td>{{users[k].bloque}}</td>
       <td>{{users[k].piso}}</td>
       <td>{{users[k].letra}}</td>
+      <td>{{users[k].correo}}</td>
+      <td>{{users[k].contrasena}}</td>
+      <td>{{users[k].admin}}</td>
       <td class="text-right">
-        <button type="button" class="btn btn-outlet-success" [routerLink]="['/user', k]">Editar</button>
-        <button type="button" class="btn btn-outlet-danger" (click)="borrarUser(k)">Borrar</button>
+        <button type="button" class="btn btn-outline-success" [routerLink]="['/user', k]">Editar</button>
+        <button type="button" class="btn btn-outline-danger" (click)="borrarUser(k)">Borrar</button>
       </td>
     </tr>
     </tbody>

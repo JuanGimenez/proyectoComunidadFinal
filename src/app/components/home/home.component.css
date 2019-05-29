@@ -1,0 +1,17 @@
+.cardTenis {
+  float:left;
+  margin-left: 100px;
+  display: inline-block;
+}
+
+.cardPadel {
+  float:left;
+  margin-left: 100px;
+  margin-right: 100px;
+  display: inline-block;
+}
+
+.cardPistas {
+  width: 100%;
+  height: 265px;
+}

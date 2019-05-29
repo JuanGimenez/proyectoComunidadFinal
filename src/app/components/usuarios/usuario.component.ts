@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../interfaces/user.interfaces';
 import {HomeService} from '../../services/home.service';
 import {NgForm} from '@angular/forms';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-usuario',
@@ -12,12 +13,16 @@ import {NgForm} from '@angular/forms';
 export class UsuarioComponent implements OnInit {
 
   user: User = {
+    uid: '',
     nombre: '',
     apellidos: '',
     bloque: 0,
     portal: 0,
     piso: 0,
-    letra: ''
+    letra: '',
+    correo: '',
+    contrasena: '',
+    admin: false
   };
 
   nuevo = false;
@@ -26,7 +31,8 @@ export class UsuarioComponent implements OnInit {
 
   constructor( private homeService: HomeService,
                private router: Router,
-               private route: ActivatedRoute
+               private route: ActivatedRoute,
+               private userService: UserService
   ) {
 
     this.route.params.subscribe(params => {

@@ -11,10 +11,8 @@ import { UsuariosComponent } from './components/usuarios/usuarios.component';
 import { UsuarioComponent } from './components/usuarios/usuario.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule } from '@angular/forms';
-import { KeysPipe } from './pipes/keys.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeService } from './services/home.service';
-import { LoginComponent } from './components/login/login.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { TenisComponent } from './components/tenis/tenis.component';
 import { PadelComponent } from './components/padel/padel.component';
@@ -30,8 +28,6 @@ import { RegistrationComponent } from './components/registration/registration.co
     UsuariosComponent,
     UsuarioComponent,
     HomeComponent,
-    KeysPipe,
-    LoginComponent,
     AdminComponent,
     TenisComponent,
     PadelComponent,

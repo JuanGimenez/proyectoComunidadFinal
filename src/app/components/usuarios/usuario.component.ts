@@ -3,7 +3,9 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {User} from '../../interfaces/user.interfaces';
 import {HomeService} from '../../services/home.service';
 import {NgForm} from '@angular/forms';
-import {UserService} from '../../services/user.service';
+import {AuthService} from '../../services/auth.service';
+import {UsuarioService} from '../../services/usuario.service';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-usuario',
@@ -22,32 +24,44 @@ export class UsuarioComponent implements OnInit {
     letra: '',
     correo: '',
     contrasena: '',
-    admin: false
+    role: ''
   };
 
+  usersArray: User[];
   nuevo = false;
   id: string;
   id2: any;
 
   constructor( private homeService: HomeService,
+               private uService: UsuarioService,
                private router: Router,
                private route: ActivatedRoute,
-               private userService: UserService
+               private auth: AuthService,
+               private db: AngularFirestore
   ) {
 
-    this.route.params.subscribe(params => {
-      this.id = params.id;
+    // this.route.params.subscribe(params => {
+    //   this.id = params.id;
+    //
+    //   if (this.id !== 'nuevo') {
+    //     this.auth.getUser(this.id).subscribe((data: User) => {
+    //       this.user = data;
+    //     });
+    //   }
+    // });
 
-      if (this.id !== 'nuevo') {
-        this.homeService.getUser(this.id).subscribe((data: User) => {
-          this.user = data;
-        });
-      }
+    this.uService.getUsuarios().subscribe(res => {
+      this.usersArray = res.map(item => {
+        return {
+          uid: item.payload.doc.id,
+          ...item.payload.doc.data() } as User;
+      });
     });
-
   }
 
   ngOnInit() {
+    this.resetForm();
+    this.uService.formData = Object.assign({});
   }
 
   guardar() {
@@ -62,7 +76,7 @@ export class UsuarioComponent implements OnInit {
           },
           error => console.log(error));
     } else {
-      this.homeService.actualizarUser(this.user, this.id)
+      this.homeService.actualizarUser(this.user, this.user.uid)
         .subscribe( data => {
             console.log(data);
           },
@@ -83,8 +97,38 @@ export class UsuarioComponent implements OnInit {
   }
 
   agregarNuevo(forma: NgForm) {
-    this.router.navigate(['/user', 'nuevo']);
+    this.router.navigate(['registrarse']);
     forma.reset();
   }
 
+  resetForm(form?: NgForm) {
+    if (form != null) {
+      form.resetForm();
+
+      form.resetForm();
+      this.uService.formData = {
+        uid: '',
+        nombre: '',
+        apellidos: '',
+        bloque: null,
+        portal: null,
+        piso: null,
+        letra: '',
+        correo: '',
+        contrasena: '',
+        role: '',
+      };
+    }
+  }
+
+  onSubmit(form: NgForm) {
+    const data = form.value;
+    this.db.collection('Users').add(data);
+    this.resetForm(form);
+
+  }
+
+  onEdit(user: User) {
+    this.uService.formData = Object.assign({}, user);
+  }
 }

@@ -1,8 +1,8 @@
 <h1>Usuario</h1>
-<div *ngIf="userService.uid | async as uid">
-  El usuario logeado tiene la id {{uid}}.
-  <div *ngIf="userService.isAdmin | async">El usuario es Admin!</div>
-  <div><button>Logout</button></div>
+<div>
+  El usuario logeado tiene la id {{uService.formData.uid}}
+
+  <div><button class="btn btn-primary">Logout</button></div>
 </div>
 <ng-template #login>
   Logearse: <button>Login</button>
@@ -13,44 +13,48 @@
 <div class="row animated fadeIn fast">
   <div class="col-md-12">
     <form (ngSubmit)="guardar()" #forma='ngForm'>
-
       <div class="form-group">
         <label>Nombre</label>
-        <input [(ngModel)]="user.nombre" type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+        <input #nombre [(ngModel)]="uService.formData.nombre" type="text" name="nombre" class="form-control" placeholder="Nombre" required>
       </div>
 
       <div class="form-group">
         <label>Apellidos</label>
-        <input [(ngModel)]="user.apellidos" type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
+        <input #apellidos [(ngModel)]="uService.formData.apellidos" type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
       </div>
 
       <div class="form-group">
         <label>Bloque</label>
-        <input [(ngModel)]="user.bloque" type="number" name="bloque" class="form-control" placeholder="Bloque">
+        <input #bloque [(ngModel)]="uService.formData.bloque" type="number" name="bloque" class="form-control" placeholder="Bloque">
       </div>
 
       <div class="form-group">
         <label>Portal</label>
-        <input [(ngModel)]="user.portal" type="number" name="portal" class="form-control" placeholder="Portal">
+        <input #portal [(ngModel)]="uService.formData.portal" type="number" name="portal" class="form-control" placeholder="Portal">
       </div>
 
       <div class="form-group">
         <label>Piso</label>
-        <input [(ngModel)]="user.piso" type="number" name="piso" class="form-control" placeholder="Piso">
+        <input #piso [(ngModel)]="uService.formData.piso" type="number" name="piso" class="form-control" placeholder="Piso">
       </div>
       <div class="form-group">
         <label>Letra</label>
-        <input [(ngModel)]="user.letra" type="text" name="letra" class="form-control" placeholder="Letra">
-      </div>
-
-      <div class="form-group">
-        <label>Letra</label>
-        <input [(ngModel)]="user.correo" type="text" name="correo" class="form-control" placeholder="Correo">
+        <input #letra [(ngModel)]="uService.formData.letra" type="text" name="letra" class="form-control" placeholder="Letra">
       </div>
 
       <div class="form-group">
-        <label>Letra</label>
-        <input [(ngModel)]="user.contrasena" type="password" name="contraseña" class="form-control" placeholder="Contraseña">
+        <label>Correo</label>
+        <input #correo  [(ngModel)]="uService.formData.correo" type="text" name="correo" class="form-control" placeholder="Correo">
+      </div>
+
+      <div class="form-group">
+        <label>Contraseña</label>
+        <input #contrasena [(ngModel)]="uService.formData.contrasena" type="password" name="contraseña" class="form-control" placeholder="Contraseña">
+      </div>
+
+      <div class="form-group">
+        <label>Role</label>
+        <input #role [(ngModel)]="uService.formData.role" type="password" name="contraseña" class="form-control" placeholder="Contraseña">
       </div>
 
       <div class="form-group">

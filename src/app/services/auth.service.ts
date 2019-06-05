@@ -4,6 +4,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -41,8 +42,8 @@ export class AuthService {
   insertUserData( userCredential: firebase.auth.UserCredential) {
     return this.db.doc(`Users/${userCredential.user.uid}`).set({
       email: this.newUser.email,
-      fisrtname: this.newUser.firstName,
-      lastname: this.newUser.lastName,
+      nombre: this.newUser.nombre,
+      apellidos: this.newUser.apellidos,
       bloque: this.newUser.bloque,
       portal: this.newUser.portal,
       piso: this.newUser.piso,
@@ -66,4 +67,24 @@ export class AuthService {
         }
       });
   }
+
+  isAdmin() {
+    return this.db.collection('Users').get().toPromise().then( (snapshot) => {
+      snapshot.docs.forEach( doc => {
+        console.log(doc.data());
+      });
+    });
+  }
+
+  getDataUser() {
+    return this.db.collection('Users').snapshotChanges();
+  }
+
+  // getDataUser() {
+  //   this.db.collection('Users').get().toPromise().then( (snapshot) => {
+  //     snapshot.docs.forEach( doc => {
+  //       return doc;
+  //     });
+  //   });
+  // }
 }

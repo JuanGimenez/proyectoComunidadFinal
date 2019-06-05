@@ -1,8 +1,9 @@
-<div>
+<div *ngIf="usersArray">
   <p *ngIf="user">Logged in as: {{ user?.email}} - {{user?.displayName}}</p>
   <button class="btn btn-primary mr-2" *ngIf="!user" (click)="login()">Log In</button>
   <button class="btn btn-primary mr-2" *ngIf="!user" (click)="register()">register</button>
   <button class="btn btn-primary mr-2" *ngIf="user" (click)="logout()">Log out</button>
+  <button class="btn btn-primary mr-2" *ngIf="user" (click)="isAdmin()">Admin</button>
 </div>
 <div class="cardPistas">
   <div class="divContenedor">
@@ -21,3 +22,31 @@
     </div>
   </div>
 </div>
+
+<table>
+  <thead>
+    <th>Uid</th>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Portal</th>
+    <th>Bloque</th>
+    <th>Piso</th>
+    <th>Letra</th>
+    <th>Role</th>
+    <th>Correo</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of usersArray">
+      <td (click)="onEdit(user)">{{user.uid}}</td>
+      <td>{{user.nombre}}</td>
+      <td>{{user.apellidos}}</td>
+      <td>{{user.portal}}</td>
+      <td>{{user.bloque}}</td>
+      <td>{{user.piso}}</td>
+      <td>{{user.letra}}</td>
+      <td>{{user.role}}</td>
+      <td>{{user.email}}</td>
+    </tr>
+
+  </tbody>
+</table>

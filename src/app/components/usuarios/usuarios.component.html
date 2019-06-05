@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-md-12 text-right">
-    <button class="btn btn-outline-primary" [routerLink]="['/user', 'nuevo']">Nuevo</button>
+    <button class="btn btn-outline-primary" [routerLink]="['/registrarse']">Nuevo</button>
   </div>
 </div>
 
@@ -26,28 +26,84 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let k of users | keys; let i = index">
-      <td>{{i + 1}}</td>
-      <td>{{users[k].nombre}}</td>
-      <td>{{users[k].apellidos}}</td>
-      <td>{{users[k].portal}}</td>
-      <td>{{users[k].bloque}}</td>
-      <td>{{users[k].piso}}</td>
-      <td>{{users[k].letra}}</td>
-      <td>{{users[k].correo}}</td>
-      <td>{{users[k].contrasena}}</td>
-      <td>{{users[k].admin}}</td>
+    <tr *ngFor="let user of usersArray">
+      <td>{{user.uid}}</td>
+      <td>{{user.nombre}}</td>
+      <td>{{user.apellidos}}</td>
+      <td>{{user.portal}}</td>
+      <td>{{user.bloque}}</td>
+      <td>{{user.piso}}</td>
+      <td>{{user.letra}}</td>
+      <td>{{user.role}}</td>
+      <td>{{user.correo}}</td>
       <td class="text-right">
-        <button type="button" class="btn btn-outline-success" [routerLink]="['/user', k]">Editar</button>
-        <button type="button" class="btn btn-outline-danger" (click)="borrarUser(k)">Borrar</button>
+        <button type="button" class="btn btn-outline-success" (click)="onEdit(user)">Editar</button>
       </td>
     </tr>
     </tbody>
   </table>
 
-  <div class="alert alert-info" role="alert" *ngIf="(users | keys).length === 0 && !loading">
-    <strong>No hay mas usuarios</strong>
+  <div class="row animated fadeIn fast">
+    <div class="col-md-12">
+      <form (ngSubmit)="guardar()" #forma='ngForm'>
+
+        <input #uid [(ngModel)]="uService.formData.uid" type="hidden" name="uid" class="form-control" placeholder="Uid">
+
+        <div class="form-group">
+          <label>Nombre</label>
+          <input #nombre [(ngModel)]="uService.formData.nombre" type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+        </div>
+
+        <div class="form-group">
+          <label>Apellidos</label>
+          <input #apellidos [(ngModel)]="uService.formData.apellidos" type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
+        </div>
+
+        <div class="form-group">
+          <label>Bloque</label>
+          <input #bloque [(ngModel)]="uService.formData.bloque" type="number" name="bloque" class="form-control" placeholder="Bloque">
+        </div>
+
+        <div class="form-group">
+          <label>Portal</label>
+          <input #portal [(ngModel)]="uService.formData.portal" type="number" name="portal" class="form-control" placeholder="Portal">
+        </div>
+
+        <div class="form-group">
+          <label>Piso</label>
+          <input #piso [(ngModel)]="uService.formData.piso" type="number" name="piso" class="form-control" placeholder="Piso">
+        </div>
+        <div class="form-group">
+          <label>Letra</label>
+          <input #letra [(ngModel)]="uService.formData.letra" type="text" name="letra" class="form-control" placeholder="Letra">
+        </div>
+
+<!--        <div class="form-group">-->
+<!--          <label>Correo</label>-->
+<!--          <input #correo  [(ngModel)]="uService.formData.correo" type="text" name="correo" class="form-control" placeholder="Correo">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--          <label>Contraseña</label>-->
+<!--          <input #contrasena [(ngModel)]="uService.formData.contrasena" type="password" name="contraseña" class="form-control" placeholder="Contraseña">-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--          <label>Role</label>-->
+<!--          <input #role [(ngModel)]="uService.formData.role" type="password" name="contraseña" class="form-control" placeholder="Contraseña">-->
+<!--        </div>-->
+
+        <div class="form-group">
+          <button [disabled]="!forma.valid"  type="submit" class="btn btn-outline-primary" (click)="onSubmit(forma)">Guardar</button>
+        </div>
+
+      </form>
+    </div>
+
   </div>
+  <!--  <div class="alert alert-info" role="alert" *ngIf="(usersArray).length === 0 && !loading">-->
+<!--    <strong>No hay mas usuarios</strong>-->
+<!--  </div>-->
 
   <div class="alert alert-warning" role="alert" *ngIf="loading">Cargando...</div>
 </div>

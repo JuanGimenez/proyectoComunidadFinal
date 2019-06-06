@@ -20,6 +20,8 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { RegistrationComponent } from './components/registration/registration.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModelComponent } from './components/model/model.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     AdminComponent,
     TenisComponent,
     PadelComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    ModelComponent
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [HomeService],
   bootstrap: [AppComponent],

@@ -1,0 +1,78 @@
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row animated fadeIn fast">
+      <div class="col-md-12">
+        <form (ngSubmit)="guardar()" #forma='ngForm'>
+
+          <input #uid [(ngModel)]="uService.formData.uid" type="hidden" name="uid" class="form-control" placeholder="Uid">
+
+          <div class="form-group">
+            <label>Nombre</label>
+            <input #nombre [(ngModel)]="uService.formData.nombre" type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+          </div>
+
+          <div class="form-group">
+            <label>Apellidos</label>
+            <input #apellidos [(ngModel)]="uService.formData.apellidos" type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
+          </div>
+
+          <div class="form-group">
+            <label>Bloque</label>
+            <input #bloque [(ngModel)]="uService.formData.bloque" type="number" name="bloque" class="form-control" placeholder="Bloque">
+          </div>
+
+          <div class="form-group">
+            <label>Portal</label>
+            <input #portal [(ngModel)]="uService.formData.portal" type="number" name="portal" class="form-control" placeholder="Portal">
+          </div>
+
+          <div class="form-group">
+            <label>Piso</label>
+            <input #piso [(ngModel)]="uService.formData.piso" type="number" name="piso" class="form-control" placeholder="Piso">
+          </div>
+          <div class="form-group">
+            <label>Letra</label>
+            <input #letra [(ngModel)]="uService.formData.letra" type="text" name="letra" class="form-control" placeholder="Letra">
+          </div>
+
+          <!--        <div class="form-group">-->
+          <!--          <label>Correo</label>-->
+          <!--          <input #correo  [(ngModel)]="uService.formData.correo" type="text" name="correo" class="form-control" placeholder="Correo">-->
+          <!--        </div>-->
+
+          <!--        <div class="form-group">-->
+          <!--          <label>Contraseña</label>-->
+          <!--          <input #contrasena [(ngModel)]="uService.formData.contrasena" type="password" name="contraseña" class="form-control" placeholder="Contraseña">-->
+          <!--        </div>-->
+
+          <!--        <div class="form-group">-->
+          <!--          <label>Role</label>-->
+          <!--          <input #role [(ngModel)]="uService.formData.role" type="password" name="contraseña" class="form-control" placeholder="Contraseña">-->
+          <!--        </div>-->
+
+          <div class="form-group">
+            <button [disabled]="!forma.valid"  type="submit" class="btn btn-outline-primary" (click)="onSubmit(forma)">Guardar</button>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+
+<hr>
+
+<pre>{{closeResult}}</pre>

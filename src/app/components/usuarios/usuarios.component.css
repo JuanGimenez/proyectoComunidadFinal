@@ -1,0 +1,12 @@
+.contenedorGrande{
+  display: flex;
+  justify-content: center;
+}
+
+.table-responsive {
+  width: 70%;
+  border: solid 2px #DEE2E6;
+  left: 0;
+  right: 0;
+}
+

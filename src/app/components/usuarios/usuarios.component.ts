@@ -6,6 +6,7 @@ import {AuthService} from '../../services/auth.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {UsuarioService} from '../../services/usuario.service';
 import {NgForm} from '@angular/forms';
+import { ModelComponent } from './../model/model.component';
 
 @Component({
   selector: 'app-usuarios',

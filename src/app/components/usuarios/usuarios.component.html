@@ -7,41 +7,41 @@
   </div>
 </div>
 
-<div class="table-responsive">
+  <div class="contenedorGrande">
+    <div class="table-responsive">
+      <table class="table">
+        <thead class="thead-inverse">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">Portal</th>
+          <th scope="col">Bloque</th>
+          <th scope="col">Piso</th>
+          <th scope="col">Letra</th>
+          <th scope="col">Correo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let user of usersArray; let i = index">
+          <td>{{i}}</td>
+          <td>{{user.nombre}}</td>
+          <td>{{user.apellidos}}</td>
+          <td>{{user.portal}}</td>
+          <td>{{user.bloque}}</td>
+          <td>{{user.piso}}</td>
+          <td>{{user.letra}}</td>
+          <td>{{user.correo}}</td>
+          <td class="text-right">
+            <app-model (click)="onEdit(user)"></app-model>
+<!--            <button class="btn btn-outline-primary" (click)="onEdit(user)">Edit</button>-->
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-  <table class="table">
-    <thead class="thead-inverse">
-    <tr>
-      <th>#</th>
-      <th>Nombre</th>
-      <th>Apellidos</th>
-      <th>Portal</th>
-      <th>Bloque</th>
-      <th>Piso</th>
-      <th>Letra</th>
-      <th>Correo</th>
-      <th>Contraseña</th>
-      <th>Admin</th>
-      <th class="text-right">Opciones</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let user of usersArray">
-      <td>{{user.uid}}</td>
-      <td>{{user.nombre}}</td>
-      <td>{{user.apellidos}}</td>
-      <td>{{user.portal}}</td>
-      <td>{{user.bloque}}</td>
-      <td>{{user.piso}}</td>
-      <td>{{user.letra}}</td>
-      <td>{{user.role}}</td>
-      <td>{{user.correo}}</td>
-      <td class="text-right">
-        <button type="button" class="btn btn-outline-success" (click)="onEdit(user)">Editar</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
 
   <div class="row animated fadeIn fast">
     <div class="col-md-12">
@@ -101,9 +101,3 @@
     </div>
 
   </div>
-  <!--  <div class="alert alert-info" role="alert" *ngIf="(usersArray).length === 0 && !loading">-->
-<!--    <strong>No hay mas usuarios</strong>-->
-<!--  </div>-->
-
-  <div class="alert alert-warning" role="alert" *ngIf="loading">Cargando...</div>
-</div>

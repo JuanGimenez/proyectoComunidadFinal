@@ -14,6 +14,15 @@
       <li class="nav-item">
         <a class="nav-link" href="#" [routerLink]="['registrarse']" [routerLinkActive]="'active'">Registrarse</a>
       </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <button class="btn btn-primary" *ngIf="user" (click)="logout()">Log out</button>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-primary" *ngIf="!user" (click)="login()">Log in</button>
+      </li>
+
 <!--      <li class="nav-item">-->
 <!--        <a class="nav-link" [routerLink]="['homeLoged']" [routerLinkActive]="'active'">HomeLoged</a>-->
 <!--      </li>-->

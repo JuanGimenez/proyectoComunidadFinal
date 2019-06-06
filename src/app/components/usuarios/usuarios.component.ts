@@ -6,7 +6,6 @@ import {AuthService} from '../../services/auth.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {UsuarioService} from '../../services/usuario.service';
 import {NgForm} from '@angular/forms';
-import { ModelComponent } from './../model/model.component';
 
 @Component({
   selector: 'app-usuarios',
@@ -117,6 +116,12 @@ export class UsuariosComponent implements OnInit {
       this.resetForm(form);
     }
 
+  }
+
+  borrarUser(uid: string) {
+    if (confirm('Estas seguro de borrar el usuario?')) {
+      this.db.doc('Users/' + uid).delete();
+    }
   }
 
 }

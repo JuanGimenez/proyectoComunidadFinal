@@ -3,6 +3,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import {BehaviorSubject} from 'rxjs';
+import {map} from 'rxjs/operators';
+import {HttpClient} from '@angular/common/http';
 
 
 @Injectable({

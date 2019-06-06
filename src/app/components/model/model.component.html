@@ -1,6 +1,6 @@
 <ng-template #content let-modal>
   <div class="modal-header">
-    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <h4 class="modal-title" id="modal-basic-title">Editar usuario {{uService.formData.nombre}}</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -8,7 +8,7 @@
   <div class="modal-body">
     <div class="row animated fadeIn fast">
       <div class="col-md-12">
-        <form (ngSubmit)="guardar()" #forma='ngForm'>
+        <form #forma='ngForm'>
 
           <input #uid [(ngModel)]="uService.formData.uid" type="hidden" name="uid" class="form-control" placeholder="Uid">
 
@@ -55,24 +55,18 @@
           <!--          <label>Role</label>-->
           <!--          <input #role [(ngModel)]="uService.formData.role" type="password" name="contraseña" class="form-control" placeholder="Contraseña">-->
           <!--        </div>-->
-
-          <div class="form-group">
-            <button [disabled]="!forma.valid"  type="submit" class="btn btn-outline-primary" (click)="onSubmit(forma)">Guardar</button>
-          </div>
-
         </form>
       </div>
 
     </div>
 
   </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  <div class="form-group">
+    <button [disabled]="!forma.valid"  type="submit" class="btn btn-outline-primary margen" (click)="onSubmit(forma)">Guardar</button>
   </div>
 </ng-template>
 
-<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Edit</button>
 
-<hr>
 
-<pre>{{closeResult}}</pre>
+<!--<pre>{{closeResult}}</pre>-->

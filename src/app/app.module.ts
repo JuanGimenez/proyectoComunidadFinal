@@ -22,6 +22,8 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { RegistrationComponent } from './components/registration/registration.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModelComponent } from './components/model/model.component';
+import { ModalDeleteComponent } from './components/model/modal-delete/modal-delete.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { ModelComponent } from './components/model/model.component';
     TenisComponent,
     PadelComponent,
     RegistrationComponent,
-    ModelComponent
+    ModelComponent,
+    ModalDeleteComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

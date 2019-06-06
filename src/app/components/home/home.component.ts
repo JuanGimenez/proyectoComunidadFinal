@@ -33,25 +33,9 @@ export class HomeComponent implements OnInit {
     });
   }
 
-
-  login() {
-    this.router.navigate(['/login']);
-  }
-
-  logout() {
-    this.auth.logout();
-  }
-
   register() {
     this.router.navigate(['/register']);
   }
 
-  isAdmin() {
-
-  }
-
-  onEdit(user: User) {
-    this.formData = Object.assign({}, user);
-  }
 
 }
